@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calil Hall — AI Overview 0–100</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1F3B;
+    --ink-soft:#5A5F7D;
+    --paper:#EDEFF2;
+    --paper-raised:#F7F8FA;
+    --mark:#F4E04D;
+    --approved:#3F7D5C;
+    --rule:#C9CEDA;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Karla',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+
+  a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+  /* --- masthead --- */
+  header{padding:56px 0 0}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  h1{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    font-size:clamp(2.4rem,7vw,3.6rem);
+    line-height:1.05;
+    letter-spacing:-.02em;
+    margin:14px 0 0;
+  }
+  /* the signature: highlighter drawn under the claim, as if marked by hand */
+  .marked{
+    background:linear-gradient(var(--mark),var(--mark)) no-repeat left bottom / 0% 42%;
+    animation:mark 900ms 500ms cubic-bezier(.2,.7,.3,1) forwards;
+    padding:0 2px;
+  }
+  @keyframes mark{to{background-size:100% 42%}}
+  @media (prefers-reduced-motion:reduce){
+    .marked{animation:none;background-size:100% 42%}
+  }
+
+  .lede{margin-top:22px;font-size:1.15rem;color:var(--ink-soft);max-width:56ch}
+
+  /* --- the review gate: the hero's actual thesis --- */
+  .gate{
+    margin:48px 0 0;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:28px 0;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .stage{color:var(--ink-soft)}
+  .stage b{display:block;font-weight:500;color:var(--ink);margin-bottom:6px}
+  .stage.human{color:var(--ink)}
+  .stage.human b{
+    background:var(--mark);
+    display:inline-block;
+    padding:1px 6px;
+    margin:0 0 6px -6px;
+  }
+  @media (max-width:640px){
+    .gate{grid-template-columns:1fr 1fr;gap:18px}
+  }
+
+  /* --- sections --- */
+  section{padding:64px 0}
+  section + section{border-top:1px solid var(--rule)}
+  h2{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    font-size:1.9rem;
+    letter-spacing:-.01em;
+    margin-bottom:6px;
+  }
+  .sub{color:var(--ink-soft);margin-bottom:32px}
+  p + p{margin-top:16px}
+
+  /* --- curriculum entries --- */
+  .entry{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    padding:22px 24px;
+    margin-bottom:14px;
+  }
+  .entry h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-size:1.25rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .entry p{color:var(--ink-soft);font-size:.97rem}
+  .status{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    display:inline-block;padding:2px 7px;margin-bottom:10px;
+    border:1px solid currentColor;
+  }
+  .status.reviewed{color:var(--approved)}
+  .status.pending{color:var(--ink);background:var(--mark);border-color:transparent}
+
+  .state{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    padding:20px 0;
+  }
+
+  footer{
+    border-top:1px solid var(--rule);
+    padding:40px 0 64px;
+    font-size:.92rem;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Calil Hall · Detroit</div>
+    <h1>I learned AI from scratch, then <span class="marked">built the thing that keeps my notes current</span>.</h1>
+    <p class="lede">AI Overview 0–100 is a free, self-updating curriculum for anyone stuck using AI like a slightly better search bar. It grows on its own. Nothing publishes until I've read it.</p>
+
+    <div class="gate" aria-label="Content pipeline">
+      <div class="stage"><b>01 Source</b>YouTube, hand-picked</div>
+      <div class="stage"><b>02 Extract</b>SocialKit</div>
+      <div class="stage"><b>03 Orchestrate</b>Apps Script</div>
+      <div class="stage"><b>04 Draft</b>Claude / Gemini</div>
+      <div class="stage human"><b>05 Review</b>Me. Always.</div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="sub">Short version</p>
+    <p>Replace this with your own words. Worth covering: what you were doing before AI, what changed, and what you're building toward. Keep it to two or three paragraphs — the pipeline above is already making the argument that you can execute.</p>
+    <p>Contact links go here: email, GitHub, wherever you want people to land next.</p>
+  </section>
+
+  <section id="curriculum">
+    <h2>The curriculum</h2>
+    <p class="sub">Pulled live from the source document</p>
+    <div id="entries" class="state">Loading entries…</div>
+  </section>
+
+  <footer>
+    Built with Claude, Gemini, ChatGPT, and Perplexity — reviewed and edited by me.
+    Full diligence statement in the source document.
+  </footer>
+
+</div>
+
+<script>
+  // Static site: no environment variables. Paste your deployed Apps Script
+  // web app URL here. It is publicly visible — keep it read-only.
+  const APPS_SCRIPT_URL = '';
+
+  const el = document.getElementById('entries');
+
+  function render(entries) {
+    if (!entries.length) {
+      el.className = 'state';
+      el.textContent = 'No entries yet.';
+      return;
+    }
+    el.className = '';
+    el.innerHTML = entries.map(e => `
+      <article class="entry">
+        <span class="status ${e.status === 'reviewed' ? 'reviewed' : 'pending'}">
+          ${e.status === 'reviewed' ? 'Reviewed' : 'Pending review'}
+        </span>
+        <h3>${e.title}</h3>
+        <p>${e.concept}</p>
+      </article>
+    `).join('');
+  }
+
+  async function load() {
+    if (!APPS_SCRIPT_URL) {
+      el.textContent = 'Add your Apps Script URL to index.html to load entries.';
+      return;
+    }
+    try {
+      const res = await fetch(APPS_SCRIPT_URL);
+      if (!res.ok) throw new Error(res.status);
+      render(await res.json());
+    } catch (err) {
+      el.textContent = 'Could not reach the source document. Try again shortly.';
+      console.error(err);
+    }
+  }
+
+  load();
+</script>
+
+</body>
+</html>
