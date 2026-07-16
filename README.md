@@ -1,4 +1,3 @@
-[README_2.md](https://github.com/user-attachments/files/30103864/README_2.md)
 # Calil Hall — Personal Site & AI Overview 0–100
 
 A personal site and a live home for **AI Overview 0–100**, a self-updating AI literacy curriculum I built while learning AI from scratch.
