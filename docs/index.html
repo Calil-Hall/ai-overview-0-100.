@@ -6,221 +6,378 @@
 <title>Calil Hall — AI Overview 0–100</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1B1F3B;
-    --ink-soft:#5A5F7D;
-    --paper:#EDEFF2;
-    --paper-raised:#F7F8FA;
-    --mark:#F4E04D;
-    --approved:#3F7D5C;
-    --rule:#C9CEDA;
+    /* sampled directly from the reference so the hero image blends seamlessly */
+    --cream:#F1E8E2;
+    --cream-deep:#EBE2D8;
+    --card:#E5D7CA;
+    --terracotta:#BE602F;
+    --terracotta-light:#D07D57;
+    --ink:#1A1916;
+    --ink-soft:#5C544C;
+    --rule:#DCD0C3;
   }
-
+ 
   *{box-sizing:border-box;margin:0;padding:0}
-
+ 
   body{
-    background:var(--paper);
+    background:var(--cream);
     color:var(--ink);
-    font-family:'Karla',system-ui,sans-serif;
+    font-family:'Jost',system-ui,sans-serif;
     font-size:17px;
-    line-height:1.65;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
-
-  a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-
-  /* --- masthead --- */
-  header{padding:56px 0 0}
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-soft);
+ 
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  @media(max-width:700px){ .wrap{padding:0 22px} }
+ 
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px}
+ 
+  /* ---------- nav ---------- */
+  .navband{background:var(--cream-deep);border-bottom:1px solid var(--rule)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:30px;font-weight:500;letter-spacing:-.02em;text-decoration:none;
+  }
+  .navlinks{display:flex;gap:34px}
+  .navlinks a{
+    text-decoration:none;font-size:15px;font-weight:400;
+    padding-bottom:2px;border-bottom:1px solid transparent;
+  }
+  .navlinks a:hover{border-bottom-color:var(--terracotta)}
+  .connect{
+    background:var(--ink);color:var(--cream);text-decoration:none;
+    font-size:14px;font-weight:500;
+    padding:13px 22px;border-radius:6px;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .connect:hover{background:#000}
+  @media(max-width:860px){ .navlinks{display:none} }
+ 
+  /* ---------- hero ---------- */
+  .hero{padding:0 0 40px}
+  .herogrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:20px;
+  }
+  .hello{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:26px;color:var(--terracotta);margin-bottom:2px;
   }
   h1{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:600;
-    font-size:clamp(2.4rem,7vw,3.6rem);
-    line-height:1.05;
-    letter-spacing:-.02em;
-    margin:14px 0 0;
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:500;
+    font-size:clamp(3.2rem,7.4vw,5.6rem);
+    line-height:.98;
+    letter-spacing:-.015em;
   }
-  /* the signature: highlighter drawn under the claim, as if marked by hand */
-  .marked{
-    background:linear-gradient(var(--mark),var(--mark)) no-repeat left bottom / 0% 42%;
-    animation:mark 900ms 500ms cubic-bezier(.2,.7,.3,1) forwards;
-    padding:0 2px;
+  .role{
+    margin-top:18px;
+    color:var(--terracotta);
+    font-weight:600;font-size:14px;
+    letter-spacing:.11em;text-transform:uppercase;
   }
-  @keyframes mark{to{background-size:100% 42%}}
-  @media (prefers-reduced-motion:reduce){
-    .marked{animation:none;background-size:100% 42%}
+  .tick{width:44px;height:1px;background:var(--ink);opacity:.45;margin:26px 0}
+  .lede{color:var(--ink-soft);max-width:44ch;font-size:17px}
+ 
+  /* the hero's action: the curriculum takes submissions */
+  .submit{
+    margin-top:34px;
+    max-width:430px;
   }
-
-  .lede{margin-top:22px;font-size:1.15rem;color:var(--ink-soft);max-width:56ch}
-
-  /* --- the review gate: the hero's actual thesis --- */
-  .gate{
-    margin:48px 0 0;
+  .submit h2{
+    font-family:'Jost',sans-serif;
+    font-size:15px;font-weight:600;
+    letter-spacing:.03em;
+    margin-bottom:5px;
+  }
+  .submit .note{font-size:14px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5}
+  .row{display:flex;gap:9px}
+  .row input{
+    flex:1;min-width:0;
+    font-family:'Jost',sans-serif;font-size:15px;color:var(--ink);
+    background:rgba(255,255,255,.55);
+    border:1px solid var(--rule);border-radius:6px;
+    padding:13px 15px;
+  }
+  .row input::placeholder{color:#9C9188}
+  .row input:focus{border-color:var(--terracotta);background:#fff}
+  .row button{
+    font-family:'Jost',sans-serif;font-size:14px;font-weight:500;
+    background:var(--ink);color:var(--cream);
+    border:0;border-radius:6px;padding:13px 22px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  }
+  .row button:hover{background:#000}
+  .row button:disabled{opacity:.5;cursor:default}
+  .msg{font-size:13.5px;margin-top:11px;min-height:19px}
+  .msg.ok{color:var(--terracotta)}
+  .msg.bad{color:#9E3B2A}
+ 
+  .scroll{
+    margin-top:44px;
+    color:var(--terracotta);font-size:14px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .scroll svg{display:block}
+ 
+  .heroimg{width:100%;height:auto;display:block}
+ 
+  @media(max-width:900px){
+    .herogrid{grid-template-columns:1fr;gap:34px}
+    .hero{padding-top:44px}
+    .scroll{display:none}
+    .submit{max-width:none}
+  }
+ 
+  /* ---------- pipeline strip ---------- */
+  .strip{
     border-top:1px solid var(--rule);
     border-bottom:1px solid var(--rule);
-    padding:28px 0;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:12px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
+    padding:34px 0;
+    display:grid;grid-template-columns:repeat(5,1fr);gap:16px;
   }
-  .stage{color:var(--ink-soft)}
-  .stage b{display:block;font-weight:500;color:var(--ink);margin-bottom:6px}
-  .stage.human{color:var(--ink)}
-  .stage.human b{
-    background:var(--mark);
-    display:inline-block;
-    padding:1px 6px;
-    margin:0 0 6px -6px;
+  .stage{font-size:13px;color:var(--ink-soft)}
+  .stage b{
+    display:block;font-weight:600;color:var(--ink);
+    font-size:11px;letter-spacing:.11em;text-transform:uppercase;margin-bottom:7px;
   }
-  @media (max-width:640px){
-    .gate{grid-template-columns:1fr 1fr;gap:18px}
+  .stage.human b{color:var(--terracotta)}
+  @media(max-width:760px){ .strip{grid-template-columns:1fr 1fr;gap:22px} }
+ 
+  /* ---------- sections ---------- */
+  section.block{padding:88px 0;border-bottom:1px solid var(--rule)}
+  .block h2{
+    font-family:'Playfair Display',Georgia,serif;
+    font-weight:500;font-size:2.6rem;letter-spacing:-.01em;
   }
-
-  /* --- sections --- */
-  section{padding:64px 0}
-  section + section{border-top:1px solid var(--rule)}
-  h2{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:600;
-    font-size:1.9rem;
-    letter-spacing:-.01em;
-    margin-bottom:6px;
+  .sub{
+    color:var(--terracotta);font-size:13px;font-weight:600;
+    letter-spacing:.11em;text-transform:uppercase;margin-bottom:12px;
   }
-  .sub{color:var(--ink-soft);margin-bottom:32px}
-  p + p{margin-top:16px}
-
-  /* --- curriculum entries --- */
+  .prose{max-width:62ch;margin-top:22px}
+  .prose p + p{margin-top:16px}
+  .prose a{color:var(--terracotta);text-underline-offset:3px}
+ 
+  /* ---------- curriculum ---------- */
+  .entries{margin-top:32px;display:grid;gap:14px}
   .entry{
-    background:var(--paper-raised);
-    border:1px solid var(--rule);
-    padding:22px 24px;
-    margin-bottom:14px;
+    background:var(--card);
+    border-radius:10px;
+    padding:26px 28px;
   }
   .entry h3{
-    font-family:'Fraunces',Georgia,serif;
-    font-size:1.25rem;
-    font-weight:600;
-    margin-bottom:8px;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:1.4rem;font-weight:500;margin-bottom:9px;
   }
-  .entry p{color:var(--ink-soft);font-size:.97rem}
+  .entry p{color:var(--ink-soft);font-size:15.5px}
   .status{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-    display:inline-block;padding:2px 7px;margin-bottom:10px;
-    border:1px solid currentColor;
+    font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    display:inline-block;padding:4px 10px;border-radius:99px;margin-bottom:13px;
   }
-  .status.reviewed{color:var(--approved)}
-  .status.pending{color:var(--ink);background:var(--mark);border-color:transparent}
-
-  .state{
-    font-family:'JetBrains Mono',monospace;
-    font-size:13px;
-    color:var(--ink-soft);
-    padding:20px 0;
-  }
-
-  footer{
-    border-top:1px solid var(--rule);
-    padding:40px 0 64px;
-    font-size:.92rem;
-    color:var(--ink-soft);
-  }
+  .status.reviewed{background:var(--terracotta);color:var(--cream)}
+  .status.pending{background:transparent;color:var(--terracotta);border:1px solid var(--terracotta)}
+  .state{color:var(--ink-soft);font-size:15px;margin-top:28px}
+ 
+  footer{padding:44px 0 72px;font-size:14px;color:var(--ink-soft)}
 </style>
 </head>
 <body>
-
-<div class="wrap">
-
-  <header>
-    <div class="eyebrow">Calil Hall · Detroit</div>
-    <h1>I learned AI from scratch, then <span class="marked">built the thing that keeps my notes current</span>.</h1>
-    <p class="lede">AI Overview 0–100 is a free, self-updating curriculum for anyone stuck using AI like a slightly better search bar. It grows on its own. Nothing publishes until I've read it.</p>
-
-    <div class="gate" aria-label="Content pipeline">
-      <div class="stage"><b>01 Source</b>YouTube, hand-picked</div>
-      <div class="stage"><b>02 Extract</b>SocialKit</div>
-      <div class="stage"><b>03 Orchestrate</b>Apps Script</div>
-      <div class="stage"><b>04 Draft</b>Claude / Gemini</div>
-      <div class="stage human"><b>05 Review</b>Me. Always.</div>
+ 
+<div class="navband">
+  <div class="wrap nav">
+    <a href="#" class="logo">CH</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#submit">Submit a video</a>
     </div>
-  </header>
-
-  <section id="about">
-    <h2>About</h2>
-    <p class="sub">Calil Hall</p>
-    <p>I built this for people like me — anyone trying to break out of the casual habit of using AI as an internet search. The goal is a foundational understanding of AI, AI fluency, AI ethics, and enough practical prompting to make something that doesn't exist in the world yet.</p>
-    <p>Everything here comes from my own learning: notes I wrote by hand, the exact videos I watched, and the exercises I worked through from scratch. I use Claude, Gemini, Perplexity, ChatGPT, and whatever else fits the task — because the training that got me here says to use every available tool and find the AI that excels at the job in front of you. I'd suggest you do the same.</p>
-    <p>It's free, and it stays current on purpose. <a href="https://github.com/calil-hall/ai-overview-0-100">The code is on GitHub</a> if you want to see how it works.</p>
+    <a href="mailto:calilihall@gmail.com" class="connect">
+      Let's Connect
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+        <path d="M1 5h11M8.5 1.5 12.5 5l-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>
+ 
+<div class="wrap hero">
+  <div class="herogrid">
+ 
+    <div>
+      <p class="hello">Hello, I'm</p>
+      <h1>Calil Hall</h1>
+      <p class="role">Self-taught. AI fluent. Building in public.</p>
+      <div class="tick"></div>
+      <p class="lede">I built AI Overview 0–100 for people like me — anyone trying to break out of using AI as a slightly better internet search. It's free, and it updates itself.</p>
+ 
+      <div class="submit" id="submit">
+        <h2>Add a video to the curriculum</h2>
+        <p class="note">Drop a YouTube link. The pipeline drafts a module from it — I review every one before it publishes.</p>
+        <div class="row">
+          <input id="link" type="url" inputmode="url" placeholder="https://youtube.com/watch?v=…" aria-label="YouTube link">
+          <button id="send" type="button">
+            Submit
+            <svg width="13" height="9" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+              <path d="M1 5h11M8.5 1.5 12.5 5l-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <p class="msg" id="msg" role="status"></p>
+      </div>
+ 
+      <div class="scroll">
+        Scroll to explore
+        <svg width="10" height="24" viewBox="0 0 10 24" fill="none" aria-hidden="true">
+          <path d="M5 0v22M1 18l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+ 
+    <img class="heroimg" src="hero.png" alt="Calil Hall">
+ 
+  </div>
+</div>
+ 
+<div class="wrap">
+  <div class="strip" aria-label="Content pipeline">
+    <div class="stage"><b>01 Source</b>YouTube, hand-picked</div>
+    <div class="stage"><b>02 Extract</b>SocialKit</div>
+    <div class="stage"><b>03 Orchestrate</b>Apps Script</div>
+    <div class="stage"><b>04 Draft</b>Claude / Gemini</div>
+    <div class="stage human"><b>05 Review</b>Me. Always.</div>
+  </div>
+</div>
+ 
+<div class="wrap">
+ 
+  <section class="block" id="about">
+    <p class="sub">About</p>
+    <h2>Why this exists</h2>
+    <div class="prose">
+      <p>I built this for people like me — anyone trying to break out of the casual habit of using AI as an internet search. The goal is a foundational understanding of AI, AI fluency, AI ethics, and enough practical prompting to make something that doesn't exist in the world yet.</p>
+      <p>Everything here comes from my own learning: notes I wrote by hand, the exact videos I watched, and the exercises I worked through from scratch. I use Claude, Gemini, Perplexity, ChatGPT, and whatever else fits the task — because the training that got me here says to use every available tool and find the AI that excels at the job in front of you. I'd suggest you do the same.</p>
+      <p>It's free, and it stays current on purpose. <a href="https://github.com/calil-hall/ai-overview-0-100">The code is on GitHub</a> if you want to see how it works.</p>
+    </div>
   </section>
-
-  <section id="curriculum">
-    <h2>The curriculum</h2>
+ 
+  <section class="block" id="curriculum">
     <p class="sub">Pulled live from the source document</p>
+    <h2>The curriculum</h2>
     <div id="entries" class="state">Loading entries…</div>
   </section>
-
+ 
   <footer>
     Built with Claude, Gemini, ChatGPT, and Perplexity — reviewed and edited by me.
     Full diligence statement in the source document.
   </footer>
-
+ 
 </div>
-
+ 
 <script>
-  // Static site: no environment variables. Paste your deployed Apps Script
-  // web app URL here. It is publicly visible — keep it read-only.
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEWdEX-bob1IpFogdMpYI-P4za8Ds74-ebLxKdOLpqDGVflvjrYluIPRtkHyv3x8UaKQ/exec';
-  
+  // ---- Curriculum feed (Apps Script web app) ----
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEWdEX-bob1IpFogdMpYI-P4za8Ds74-ebLxKdOLpqDGVflvjrYluIPRtkHyv3x8UaKQ/exec';
+ 
+  // ---- Google Form intake ----
+  // Replace both. See the setup steps for how to find them.
+  const FORM_ID = '1FAIpQLSeCH9LaYszdNbR4XqSNxNpAChWS9e9WRRBUmem3Se3FD8a_2w';
+  const FORM_ENTRY_ID = 'entry.981289599';
+ 
   const el = document.getElementById('entries');
-
-  function render(entries) {
-    if (!entries.length) {
+  const esc = s => String(s).replace(/[&<>"']/g, c => (
+    {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
+  ));
+ 
+  function render(entries){
+    if(!entries.length){
       el.className = 'state';
       el.textContent = 'No entries yet.';
       return;
     }
-    el.className = '';
+    el.className = 'entries';
     el.innerHTML = entries.map(e => `
       <article class="entry">
         <span class="status ${e.status === 'reviewed' ? 'reviewed' : 'pending'}">
           ${e.status === 'reviewed' ? 'Reviewed' : 'Pending review'}
         </span>
-        <h3>${e.title}</h3>
-        <p>${e.concept}</p>
+        <h3>${esc(e.title)}</h3>
+        <p>${esc(e.concept)}</p>
       </article>
     `).join('');
   }
-
-  async function load() {
-    if (!APPS_SCRIPT_URL) {
+ 
+  async function load(){
+    if(!APPS_SCRIPT_URL){
       el.textContent = 'Add your Apps Script URL to index.html to load entries.';
       return;
     }
-    try {
+    try{
       const res = await fetch(APPS_SCRIPT_URL);
-      if (!res.ok) throw new Error(res.status);
+      if(!res.ok) throw new Error(res.status);
       render(await res.json());
-    } catch (err) {
+    }catch(err){
       el.textContent = 'Could not reach the source document. Try again shortly.';
       console.error(err);
     }
   }
-
   load();
+ 
+  // ---- Submit box ----
+  const input = document.getElementById('link');
+  const send  = document.getElementById('send');
+  const msg   = document.getElementById('msg');
+ 
+  // Mirrors the server-side check, so obvious mistakes never reach the Sheet.
+  const isYouTube = url =>
+    /^https?:\/\/(www\.)?(youtube\.com\/(watch\?|shorts\/)|youtu\.be\/)/i.test(url.trim());
+ 
+  function say(text, kind){
+    msg.textContent = text;
+    msg.className = 'msg' + (kind ? ' ' + kind : '');
+  }
+ 
+  async function submitLink(){
+    let url = input.value.trim();
+    if(!url){ say('Paste a YouTube link first.', 'bad'); return; }
+    if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    if(!isYouTube(url)){ say("That doesn't look like a YouTube link.", 'bad'); return; }
+    if(FORM_ID.indexOf('PASTE') === 0){ say('Form not connected yet.', 'bad'); return; }
+ 
+    send.disabled = true;
+    say('Sending…');
+ 
+    const body = new URLSearchParams();
+    body.append(FORM_ENTRY_ID, url);
+ 
+    try{
+      // no-cors: the request goes through, but the response is opaque —
+      // we can confirm it was sent, not that it was accepted.
+      await fetch(`https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`, {
+        method: 'POST',
+        mode: 'no-cors',
+        body
+      });
+      input.value = '';
+      say('Sent. It’ll show up here as Pending once the pipeline runs.', 'ok');
+    }catch(err){
+      say('Could not send that. Try again shortly.', 'bad');
+      console.error(err);
+    }finally{
+      send.disabled = false;
+    }
+  }
+ 
+  send.addEventListener('click', submitLink);
+  input.addEventListener('keydown', e => { if(e.key === 'Enter') submitLink(); });
 </script>
-
+ 
 </body>
 </html>
+ 
